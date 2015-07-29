@@ -26,6 +26,10 @@ module.exports = function(grunt) {
     jshint: {
       files: [
         // Add filespec list here
+        '*.js',
+        'app/**/*.js',
+        'lib/**/*.js',
+        'public/**/*.js',
       ],
       options: {
         force: 'true',
@@ -91,6 +95,7 @@ module.exports = function(grunt) {
   ////////////////////////////////////////////////////
 
   grunt.registerTask('test', [
+    'jshint',
     'mochaTest'
   ]);
 
