@@ -6,7 +6,7 @@ var handler = require('./lib/request-handler');
 
 // Set up DB connection
 var mongoose = require('mongoose');
-var host = process.env.NODE_ENV === 'production' ? /* TODO */'mongodb://www.google.com' : 'mongodb://localhost';
+var host = process.env.NODE_ENV === 'production' ? process.env.CUSTOMCONNSTR_MONGOLAB_URI : 'mongodb://localhost';
 
 mongoose.connect(host);
 
