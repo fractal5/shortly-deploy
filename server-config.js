@@ -4,6 +4,18 @@ var util = require('./lib/utility');
 
 var handler = require('./lib/request-handler');
 
+// Set up DB connection
+var mongoose = require('mongoose');
+var host = process.env.NODE_ENV === 'production' ? /* TODO */'mongodb://www.google.com' : 'mongodb://localhost';
+
+mongoose.connect(host);
+
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function(callback) {
+  console.log("DB connection set up.");
+});
+
 var app = express();
 
 app.configure(function() {
